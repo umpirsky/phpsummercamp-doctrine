@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+    ServerName doctrine.phpsc
+    DocumentRoot /var/www/summercamp/workshops/doctrine/web
+    DirectoryIndex index.php
+
+    <Directory /var/www/summercamp/workshops/doctrine/web>
+        Options FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+</VirtualHost>
