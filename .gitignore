@@ -1,6 +1,6 @@
-/vendor/
-/cache/
-/logs/
+vendor
+slides
+cache
+logs
 .env
-/web/bundles
-
+web/bundles

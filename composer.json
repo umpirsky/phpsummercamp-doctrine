@@ -6,7 +6,9 @@
         "vlucas/phpdotenv": "^2.0",
         "symfony/monolog-bundle": "^2.7",
         "doctrine/orm": "^2.5",
-        "doctrine/doctrine-bundle": "^1.5"
+        "doctrine/doctrine-bundle": "^1.5",
+        "mnsami/composer-custom-directory-installer": "^1.0",
+        "umpirsky/phpsummercamp-doctrine-wiki": "*@dev"
     },
     "authors": [
         {
@@ -17,6 +19,11 @@
     "autoload": {
         "psr-4": {
             "AppBundle\\": "AppBundle/"
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "slides": ["umpirsky/phpsummercamp-doctrine-wiki"]
         }
     }
 }
