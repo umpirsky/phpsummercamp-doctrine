@@ -10,6 +10,21 @@ use Symfony\Component\HttpFoundation\Request;
 class ProductController extends Controller
 {
     /**
+     * @Route("/product")
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $products = $em->getRepository('AppBundle:Product')->findAll();
+
+        return $this->render(
+            'Product/index.html.twig',
+            ['products' => $products]
+        );
+    }
+
+    /**
      * @Route("/product/create")
      */
     public function createAction(Request $request)
@@ -24,7 +39,7 @@ class ProductController extends Controller
             $em->persist($product);
             $em->flush($product);
 
-            return $this->redirect('/');
+            return $this->redirect('/product');
         }
 
         return $this->render('Product/create.html.twig');
