@@ -17,7 +17,13 @@ class ProductController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $products = $em->getRepository('AppBundle:Product')->findAll();
+        $products = $em->getRepository('AppBundle:Product')
+            ->createQueryBuilder('product')
+            ->select('product', 'category')
+            ->leftJoin('product.category', 'category')
+            ->getQuery()
+            ->getResult()
+        ;
 
         return $this->render(
             'Product/index.html.twig',
