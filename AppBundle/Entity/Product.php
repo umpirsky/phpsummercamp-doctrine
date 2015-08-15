@@ -32,6 +32,11 @@ class Product
     private $description;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Category", cascade="persist")
+     */
+    private $category;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -78,6 +83,18 @@ class Product
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
 
         return $this;
     }

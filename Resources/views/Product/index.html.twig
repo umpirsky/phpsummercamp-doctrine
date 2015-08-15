@@ -7,6 +7,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Description</th>
                 <th>Created at</th>
@@ -16,6 +17,7 @@
             {% for product in products %}
                 <tr>
                     <td>{{ product.getName() }}</td>
+                    <td>{{ product.getCategory().getName() }}</td>
                     <td>{{ product.getPrice() }} kn</td>
                     <td>{{ product.getDescription() }}</td>
                     <td>{{ product.getCreatedAt().format('d. m. Y. H:i:s') }}</td>

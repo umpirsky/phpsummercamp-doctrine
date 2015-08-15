@@ -24,7 +24,7 @@ class Category
     /**
      * @ORM\Column(type="integer")
      */
-    private $position;
+    private $position = 0;
 
     public function getId()
     {

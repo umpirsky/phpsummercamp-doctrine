@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\Product;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -34,6 +35,10 @@ class ProductController extends Controller
             $product->setName($request->request->get('name'));
             $product->setPrice($request->request->get('price'));
             $product->setDescription($request->request->get('description'));
+
+            $category = new Category();
+            $category->setName($request->request->get('category'));
+            $product->setCategory($category);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
