@@ -32,6 +32,29 @@ class ProductController extends Controller
     }
 
     /**
+     * @Route("/product/category/{category}")
+     */
+    public function categoryAction($category)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $products = $em->getRepository('AppBundle:Product')
+            ->createQueryBuilder('product')
+            ->select('product', 'category')
+            ->leftJoin('product.category', 'category')
+            ->where('category.name = :category')
+            ->setParameter('category', $category)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $this->render(
+            'Product/index.html.twig',
+            ['products' => $products]
+        );
+    }
+
+    /**
      * @Route("/product/create")
      */
     public function createAction(Request $request)

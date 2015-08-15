@@ -17,7 +17,7 @@
             {% for product in products %}
                 <tr>
                     <td>{{ product.getName() }}</td>
-                    <td>{{ product.getCategory().getName() }}</td>
+                    <td><a href="/product/category/{{ product.getCategory().getName() }}">{{ product.getCategory().getName() }}</a></td>
                     <td>{{ product.getPrice() }} kn</td>
                     <td>{{ product.getDescription() }}</td>
                     <td>{{ product.getCreatedAt().format('d. m. Y. H:i:s') }}</td>
