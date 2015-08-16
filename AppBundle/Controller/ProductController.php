@@ -18,11 +18,7 @@ class ProductController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $products = $em->getRepository('AppBundle:Product')
-            ->createQueryBuilder('product')
-            ->select('product', 'category')
-            ->leftJoin('product.category', 'category')
-            ->getQuery()
-            ->getResult()
+            ->findAllProducts()
         ;
 
         return $this->render(
@@ -39,13 +35,7 @@ class ProductController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $products = $em->getRepository('AppBundle:Product')
-            ->createQueryBuilder('product')
-            ->select('product', 'category')
-            ->leftJoin('product.category', 'category')
-            ->where('category.name = :category')
-            ->setParameter('category', $category)
-            ->getQuery()
-            ->getResult()
+            ->findAllProductsByCategory($category)
         ;
 
         return $this->render(
