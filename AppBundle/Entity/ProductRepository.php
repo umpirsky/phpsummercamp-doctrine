@@ -19,13 +19,13 @@ class ProductRepository extends EntityRepository
 
     public function findAllProductsByCategory($categoryName)
     {
-        return $this
-            ->createQueryBuilder('product')
-            ->select('product', 'category')
-            ->leftJoin('product.category', 'category')
-            ->where('category.name = :name')
+        return $this->getEntityManager()
+            ->createQuery('SELECT product, category
+                FROM AppBundle:Product product
+                LEFT JOIN product.category category
+                WHERE category.name = :name
+            ')
             ->setParameter('name', $categoryName)
-            ->getQuery()
             ->getResult()
         ;
     }
