@@ -13,6 +13,7 @@ class ProductRepository extends EntityRepository
             ->select('product', 'category')
             ->leftJoin('product.category', 'category')
             ->getQuery()
+            ->useResultCache(true)
             ->getResult()
         ;
     }
