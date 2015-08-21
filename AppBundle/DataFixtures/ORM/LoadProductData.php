@@ -5,6 +5,7 @@ namespace AppBundle\DataFixtures\ORM;
 use AppBundle\Entity\Product;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
 
 class LoadProductData extends AbstractFixture
 {
@@ -24,13 +25,15 @@ class LoadProductData extends AbstractFixture
 
     public function load(ObjectManager $manager)
     {
+        $faker = Factory::create();
+
         foreach ($this->products as $name => $category) {
             $product = new Product();
 
             $product
                 ->setName($name)
                 ->setPrice(rand(9, 999))
-                ->setDescription($name)
+                ->setDescription($faker->text)
                 ->setCategory($this->getReference($category))
             ;
 
