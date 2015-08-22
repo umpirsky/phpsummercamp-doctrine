@@ -47,11 +47,6 @@ class Product
      */
     private $createdAt;
 
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
-
     public function getId()
     {
         return $this->id;
@@ -127,6 +122,14 @@ class Product
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function onCreate()
+    {
+        return $this->setCreatedAt(new \DateTime());
     }
 
     /**
