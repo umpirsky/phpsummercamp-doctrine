@@ -18,7 +18,7 @@ class Version20150821203510 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE Product ADD updatedAt DATETIME NOT NULL');
+        $this->addSql('ALTER TABLE Product ADD updatedAt DATETIME DEFAULT NULL');
     }
 
     /**
