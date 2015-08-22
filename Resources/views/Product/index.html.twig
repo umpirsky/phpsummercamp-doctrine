@@ -10,7 +10,9 @@
                 <th>Category</th>
                 <th>Price</th>
                 <th>Description</th>
+                <th>Updated at</th>
                 <th>Created at</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +22,9 @@
                     <td><a href="/product/category/{{ product.getCategory().getName() }}">{{ product.getCategory().getName() }}</a></td>
                     <td>{{ product.getPrice() }} kn</td>
                     <td>{{ product.getDescription() }}</td>
+                    <td>{{ product.getUpdatedAt().format('d. m. Y. H:i:s') }}</td>
                     <td>{{ product.getCreatedAt().format('d. m. Y. H:i:s') }}</td>
+                    <td><a href="/product/update/{{ product.id }}" class="btn btn-default">Update</a></td>
                 </tr>
             {% endfor %}
         </tbody>

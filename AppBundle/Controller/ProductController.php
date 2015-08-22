@@ -68,4 +68,28 @@ class ProductController extends Controller
 
         return $this->render('Product/create.html.twig');
     }
+
+    /**
+     * @Route("/product/update/{id}")
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $product = $em->getRepository('AppBundle:Product')
+            ->find($id)
+        ;
+
+        if ($request->isMethod('POST')) {
+            $product->setName($request->request->get('name'));
+            $product->setPrice($request->request->get('price'));
+            $product->setDescription($request->request->get('description'));
+
+            $em->flush($product);
+
+            return $this->redirect('/product');
+        }
+
+        return $this->render('Product/update.html.twig', ['product' => $product]);
+    }
 }

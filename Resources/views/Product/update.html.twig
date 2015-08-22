@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Updating product</h1>
+
+    <form class="form-vertical" method="post">
+        <div class="form-group">
+            <input name="name" type="text" class="form-control" placeholder="Name" value="{{ product.getName() }}">
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input name="price" type="number" class="form-control" placeholder="Price" value="{{ product.getPrice() }}">
+                <div class="input-group-addon">kn</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea name="description" class="form-control" placeholder="Description">{{ product.getDescription() }}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Update</button>
+        </div>
+    </form>
+{% endblock %}
