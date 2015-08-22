@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="ProductRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Product
 {
@@ -126,5 +127,13 @@ class Product
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function onUpdate()
+    {
+        return $this->setUpdatedAt(new \DateTime());
     }
 }
